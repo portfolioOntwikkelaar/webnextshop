@@ -16,7 +16,7 @@ const Grid: FC<Props> = ({
     style.root,
     {
       [style.layoutA]: layout === "A",
-      [style.layoutB]: layout === "B"
+      [style.layoutB]: layout === "B",
     }
   )
   return (

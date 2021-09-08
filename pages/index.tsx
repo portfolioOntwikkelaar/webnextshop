@@ -49,6 +49,25 @@ export default function Home({
 
         )}
       </Marquee>
+      <Grid layout="B">
+      { products.slice(0, 3).map(product => 
+        <ProductCard 
+          key={product.id}
+          product={product}  
+          />
+
+        )}
+      </Grid>
+      <Marquee variant="secondary">
+      { products.slice(0, 3).map(product => 
+        <ProductCard 
+          key={product.id}
+          variant="slim"
+          product={product}  
+          />
+
+        )}
+      </Marquee>
     </>
   )
 }

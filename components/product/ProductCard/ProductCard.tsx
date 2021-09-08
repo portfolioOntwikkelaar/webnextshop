@@ -28,7 +28,7 @@ const ProductCard: FC<Props> = ({product, variant = "simple"}) => {
                 className={style.productImage}
                 alt={product.name ?? "Product image"}
                 src={product.images[0].url ?? placeholderImage}
-                height={320}
+                height={"30px"}
                 width={320}
                 quality="85"
                 layout="fixed"
@@ -56,7 +56,7 @@ const ProductCard: FC<Props> = ({product, variant = "simple"}) => {
         className={style.productImage}
         alt={product.name ?? "Product image"}
         src={product.images[0].url ?? placeholderImage}
-        height={540}
+        height={30}
         width={540}
         quality="85"
         layout="responsive"
@@ -82,7 +82,7 @@ const ProductCard: FC<Props> = ({product, variant = "simple"}) => {
         className={style.productImage}
         alt={product.name ?? "Product image"}
         src={product.images[0].url ?? placeholderImage}
-        height={540}
+        height={440}
         width={540}
         quality="85"
         layout="responsive"
