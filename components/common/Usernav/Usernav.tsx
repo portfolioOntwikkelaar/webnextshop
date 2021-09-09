@@ -1,6 +1,7 @@
 import { FC } from "react"
 import style from "./Usernav.module.css"
 import Link from "next/link"
+import { Bag as Cart, Heart } from "@components/icons"
 
 
 const Usernav: FC = () => {
@@ -9,12 +10,12 @@ const Usernav: FC = () => {
     <nav>
       <ul className={style.list}>
         <li className={style.item}>
-          Cart
+          <Cart />
         </li>
         <li className={style.item}>
-          <Link href="/">
+          <Link href="/wishlist">
             <a>
-            Wishlist
+            <Heart />
             </a>
           </Link>
         </li>
