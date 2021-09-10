@@ -9,11 +9,12 @@ import { FC, useRef } from 'react'
 
 interface Props {
   children: any
-  // isOpen: boolean
+  isOpen: boolean
+  onClose: () => void
   // onClose: () => void
 }
 // isOpen, onClose
-const Sidebar: FC<Props> = ({ children }) => {
+const Sidebar: FC<Props> = ({ children, isOpen, onClose }) => {
   const ref = useRef() as React.MutableRefObject<HTMLDivElement>
 
   // useEffect(() => {
@@ -30,14 +31,14 @@ const Sidebar: FC<Props> = ({ children }) => {
   //   }
   // }, [isOpen])
   // ref={ref}
-  const isOpen = true
+
   return (
     <>
       { isOpen ? (
         <div  className="fixed inset-0 overflow-hidden h-full z-50">
           <div className="absolute inset-0 overflow-hidden">
             <div
-              onClick={() => {}}
+              onClick={onClose}
               className="absolute inset-0 bg-black bg-opacity-50 transition-opacity"
             />
             <section className="absolute inset-y-0 right-0 pl-10 max-w-full flex sm:pl-16 outline-none">
