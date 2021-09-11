@@ -12,6 +12,7 @@ const Layout: FC = ({children}) => {
    } = useUI()
 
 
+
   return (
     <div className={style.root}>
       <Navbar />

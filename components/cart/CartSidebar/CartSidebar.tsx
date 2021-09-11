@@ -1,17 +1,18 @@
 import { FC } from 'react'
-import { Link } from "next/link"
+
 import { Bag, Cross } from '@components/icons'
 import cn from "classnames"
-// import { useUI } from '@components/ui/context'
+import { useUI } from '@components/ui/context'
 // import useCart from '@framework/cart/use-cart'
 // import { LineItem } from '@common/types/cart'
 // import CartItem from '../CartItem'
-import { Button } from '@components/ui'
+// import { Button } from '@components/ui'
 
 const CartSidebar: FC = () => {
-  // const { closeSidebar} = useUI()
-  // const { data, isEmpty } = useCart()
   const isEmpty = true
+  const { closeSidebar} = useUI()
+  
+  // const { data, isEmpty } = useCart()
 
   const rootClass = cn(
     "h-full flex flex-col",
@@ -24,7 +25,7 @@ const CartSidebar: FC = () => {
         <div className="flex items-start justify-between space-x-3">
           <div className="h-7 flex items-center">
             <button
-              onClick={() => alert("Closing Sidebar")}
+              onClick={closeSidebar}
               className="hover:text-gray-500 transition ease-in-out duration-150"
             >
               <Cross className="h-6 w-6" />
