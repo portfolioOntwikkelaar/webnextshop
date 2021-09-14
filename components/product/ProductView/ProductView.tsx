@@ -4,10 +4,11 @@ import style from './ProductView.module.css'
 import { Container } from '@components/ui'
 import Image from "next/image"
 import { Product } from '@common/types/product'
-// import { ProductSlider, Swatch } from "@components/product"
+import { ProductSlider  } from "@components/product"
 // import { Choices, getVariant } from '../helpers'
 // import { useUI } from '@components/ui/context'
 // import useAddItem from "@framework/cart/use-add-item"
+// Swatch
 
 interface Props {
   product: Product
@@ -45,15 +46,16 @@ const ProductView: FC<Props> = ({ product }) => {
         <div className={cn(style.productDisplay, 'fit')}>
           <div className={style.nameBox}>
             <h1 className={style.name}>
-              {/* {product.name} */}Product Name
+              {product.name}
             </h1>
             <div className={style.price}>
-              {/* {product.price.value} */}50
+              {product.price.value}
+
               {` `}
-              {/* {product.price.currencyCode} */}$
+              {product.price.currencyCode}
             </div>
           </div>
-          {/* <ProductSlider>
+          <ProductSlider>
             { product.images.map(image =>
               <div key={image.url} className={style.imageContainer}>
                 <Image
@@ -66,17 +68,8 @@ const ProductView: FC<Props> = ({ product }) => {
                 />
               </div>
             )}
-          </ProductSlider> */}
-          <div className={style.imageContainer}>
-                <Image
-                  className={style.img}
-                  src={"/product-image-placeholder.svg"}
-                  alt={'Product Image'}
-                  width={1050}
-                  height={1050}
-                  quality="85"
-                />
-              </div>
+          </ProductSlider>
+          
         </div>
         <div className={style.sidebar}>
           <section>
@@ -114,7 +107,7 @@ const ProductView: FC<Props> = ({ product }) => {
               </div>
             
             <div className="pb-14 break-words w-full max-w-xl text-lg">
-              Products description...
+              { product.description }
             </div>
           </section>
           <div>
