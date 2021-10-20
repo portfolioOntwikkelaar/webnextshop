@@ -14,7 +14,7 @@ const ProductCard: FC<Props> = ({product, variant = "simple"}) => {
   // console.log(product.images)
   return (
     <Link href={`/products/${product.slug}`}>
-     <a className={style.root}>
+     <a className={style.rootz}>
        { variant === "slim" ? 
        <>
          <div className="inset-0 flex items-center justify-center absolute z-20">

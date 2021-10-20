@@ -5,6 +5,7 @@ import { Button, Container } from '@components/ui'
 import Image from "next/image"
 import { Product } from '@common/types/product'
 import { ProductSlider, Swatch  } from "@components/product"
+import { Choices, getVariant } from '../helpers'
 // import { Choices, getVariant } from '../helpers'
 // import { useUI } from '@components/ui/context'
 // import useAddItem from "@framework/cart/use-add-item"
@@ -14,16 +15,15 @@ interface Props {
   product: Product
 }
 
-type AvailableChoices = "color" | "size" | string
 
-type Choices = {
-  [P in AvailableChoices]: string
-}
 
 const ProductView: FC<Props> = ({ product }) => {
   const [ choices, setChoices ] = useState<Choices>({})
 
-  console.log(choices)
+  const variant = getVariant(product, choices)
+
+
+  // console.log(choices)
   // const [ isLoading, setIsLoading ] = useState(false)
 
   // const { openSidebar } = useUI()
@@ -47,7 +47,7 @@ const ProductView: FC<Props> = ({ product }) => {
   //     setIsLoading(false)
   //   }
   // }
-
+  console.log(product)
   return (
     <Container>
       <div className={cn(style.root, 'fit', "mb-5")}>
@@ -93,19 +93,27 @@ const ProductView: FC<Props> = ({ product }) => {
                 <div className="flex flex-row py-4">
                   {
                     option.values.map(optValue => 
-                      <Swatch 
-                      key={`${option.id}-${optValue.label}`} 
-                      label={optValue.label}
-                      color={optValue.hexColor}
-                      variant={option.displayName}
-                      onClick={() => {
-                        setChoices({
-                          ...choices,
-                          [option.displayName.toLowerCase()]: optValue.label.toLowerCase()
-                        })
-                        
-                      }}
-                      />
+                      {
+                        const activeChoice = choices[option.displayName.toLowerCase()]
+                        // console.log(activeChoice)
+                        return (
+
+                          <Swatch 
+                          key={`${option.id}-${optValue.label}`} 
+                          label={optValue.label}
+                          color={optValue.hexColor}
+                          variant={option.displayName}
+                          active={optValue.label.toLowerCase() === activeChoice}
+                          onClick={() => {
+                            setChoices({
+                              ...choices,
+                              [option.displayName.toLowerCase()]: optValue.label.toLowerCase()
+                            })
+                            
+                          }}
+                          />
+                        )
+                      }
                       
                       )
                   }
