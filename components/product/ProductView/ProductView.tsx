@@ -6,9 +6,11 @@ import Image from "next/image"
 import { Product } from '@common/types/product'
 import { ProductSlider, Swatch  } from "@components/product"
 import { Choices, getVariant } from '../helpers'
+import { useUI } from '@components/ui/context'
 // import { Choices, getVariant } from '../helpers'
-// import { useUI } from '@components/ui/context'
-// import useAddItem from "@framework/cart/use-add-item"
+
+import useAddItem from "@framework/cart/use-add-item"
+// import { useApiProvider } from "@common"
 // Swatch
 
 interface Props {
@@ -19,9 +21,12 @@ interface Props {
 
 const ProductView: FC<Props> = ({ product }) => {
   const [ choices, setChoices ] = useState<Choices>({})
+  // const { hooks, fetcher } = useApiProvider()
+  const { openSidebar } = useUI()
+  const addItem = useAddItem()
 
   const variant = getVariant(product, choices)
-
+  console.log(variant)
 
   // console.log(choices)
   // const [ isLoading, setIsLoading ] = useState(false)
@@ -47,6 +52,22 @@ const ProductView: FC<Props> = ({ product }) => {
   //     setIsLoading(false)
   //   }
   // }
+
+  const addToCart = () => {
+    try {
+      const item = {
+        productId: String(product.id),
+        variantId: variant?.id,
+        variantOptions: variant?.options
+      }
+
+      const output = addItem(item)
+      alert(JSON.stringify(output))
+      openSidebar()
+    } catch {
+      
+    }
+  }
   console.log(product)
   return (
     <Container>
@@ -128,7 +149,7 @@ const ProductView: FC<Props> = ({ product }) => {
           <div>
             <Button
               className={style.button}
-              onClick={() => alert("adding to cart")}
+              onClick={addToCart}
             >
               Add to Cart
             </Button>
