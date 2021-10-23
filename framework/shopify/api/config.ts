@@ -7,9 +7,10 @@ import { fetchApi} from "../utils"
 class Config {
   private config: ApiConfig
 
-  constructor(config: any) {
+  constructor(config: ApiConfig) {
     this.config = config
   }
+  // constructor(config: any)
 
   getConfig(): ApiConfig {
     return this.config

@@ -10,6 +10,7 @@ import { useUI } from '@components/ui/context'
 // import { Choices, getVariant } from '../helpers'
 
 import useAddItem from "@framework/cart/use-add-item"
+import { useApiProvider } from '@common'
 // import { useApiProvider } from "@common"
 // Swatch
 
@@ -21,6 +22,7 @@ interface Props {
 
 const ProductView: FC<Props> = ({ product }) => {
   const [ choices, setChoices ] = useState<Choices>({})
+  const api = useApiProvider()
   // const { hooks, fetcher } = useApiProvider()
   const { openSidebar } = useUI()
   const addItem = useAddItem()

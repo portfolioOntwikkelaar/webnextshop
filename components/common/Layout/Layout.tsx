@@ -4,6 +4,7 @@ import { Footer, Navbar } from "@components/common"
 import { Sidebar } from "@components/ui"
 import { CartSidebar } from "@components/cart"
 import { useUI } from "@components/ui/context"
+import { ApiProvider } from "@framework"
 
 const Layout: FC = ({children}) => {
   const { 
@@ -14,6 +15,8 @@ const Layout: FC = ({children}) => {
 
 
   return (
+    <ApiProvider>
+
     <div className={style.root}>
       <Navbar />
       <Sidebar 
@@ -28,6 +31,7 @@ const Layout: FC = ({children}) => {
     </main>
     <Footer />
     </div>
+    </ApiProvider>
   )
 }
 
