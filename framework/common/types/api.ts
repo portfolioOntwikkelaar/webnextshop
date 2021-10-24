@@ -12,7 +12,6 @@ export type ApiFetcherResults<T> = {
 }
 
 export interface ApiConfig {
-  apiUrl: string
   fetch: ApiFetcher
 }
 

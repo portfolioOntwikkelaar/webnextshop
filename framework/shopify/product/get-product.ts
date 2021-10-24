@@ -17,7 +17,6 @@ const getProduct = async ( options: {config: ApiConfig, variables: Variables}): 
   const {config, variables} = options
   const { data } = await config.fetch<any>({
     query: getProductQuery, 
-    url: config.apiUrl, 
     variables
   })
 
